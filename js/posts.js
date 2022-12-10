@@ -9,22 +9,20 @@ const posts = async ()=>{
 
         for(d of data){
             let firstPart = ""
-            let secondPart = ""
+         
             for(s in d.content){
-                if(s < 100){
+                if(s <= 100){
                     firstPart += d.content[s]
-                }else{
-                    secondPart += d.content[s]
                 }
             }
             htmlContent += `
                 <div data-id=${d._id}>
-                    <h2>${d.title}</h2>
-                    <p>${d.author}</</p>
+                    <h3>${d.title}</h3>
+                    <div>${d.author}</</div>
                     <p>${d.date}</p>
                     <p> 
                         <span>${firstPart}</span>
-                        <a href="post.html">read more...</a>
+                        <a href="post.html?postID=${d._id}">read more...</a>
                     </p>
                 </div>
             `
