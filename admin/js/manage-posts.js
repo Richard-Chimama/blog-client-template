@@ -1,3 +1,12 @@
+/**
+ * The function manage two API calls and polulate the table with data.
+ * The first API call retrieve data from the server, create the html element 
+ * and then insert the data into the table element in index.html page
+ * 
+ * The second API request is triggered when the delete button is clicked.
+ * The call makes a delete request and remove the specific data from both 
+ * the server and the table
+ */
 const posts = async ()=>{
     try{
         const getPosts = await fetch("https://blog-api-assignment.up.railway.app/posts")
@@ -8,13 +17,13 @@ const posts = async ()=>{
         for(d of data){
             htmlContent += `
                 <tr id=${d._id}>
-                    <td >${data.indexOf(d)+1}</td>
                     <td class="data">${d.title}</td>
                     <td class="data">${d.author}</td>
-                    <td class="data">${d.tags.join(', ')}</td>
+                    <td class="data">${d.tags != null ? d.tags.join(', '):""}</td>
                     <td class="data">${new Date(d.date).toDateString()}</td>
                     <td class="data">
-                        <a href="update-post.html?postId=${d._id}">Update</a> | <a href="#">Delete</a>
+                        <a href="update-post.html?postId=${d._id}">Update</a> |
+                         <a href="#" data-id=${d._id} class="delete" >Delete</a>
                     </td>
                 </tr>
             `
@@ -22,10 +31,26 @@ const posts = async ()=>{
 
         document.getElementById('table-body').innerHTML = htmlContent
 
+        const deletes = document.querySelectorAll(".delete")
+        deletes.forEach((del)=>{
+                del.addEventListener("click",async (e)=>{
+                    e.preventDefault() 
+                    try{
+                        await fetch("https://blog-api-assignment.up.railway.app/posts/"+e.target.dataset.id,{
+                            method:"DELETE"
+                        })
+                        let parent = e.target.parentNode.parentNode
+                        parent.remove()
 
+                    }catch(err){
+                        console.log(err)
+                    }
+                })
+        })
+
+        
     }catch(err){
         console.log("HTTP Error: ", err)
     }
 }
-
 posts()
