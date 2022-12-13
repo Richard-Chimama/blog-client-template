@@ -22,8 +22,8 @@ const posts = async ()=>{
                     <td class="data">${d.tags != null ? d.tags.join(', '):""}</td>
                     <td class="data">${new Date(d.date).toDateString()}</td>
                     <td class="data">
-                        <a href="update-post.html?postId=${d._id}">Update</a> |
-                         <a href="#" data-id=${d._id} class="delete" >Delete</a>
+                        <a href="update-post.html?postId=${d._id}"><i class="fa-regular fa-pen-to-square"></i> Update</a> |
+                        <a href="#" data-id=${d._id} class="delete" ><i class="fa-solid fa-trash"></i> Delete</a>
                     </td>
                 </tr>
             `

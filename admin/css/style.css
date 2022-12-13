@@ -32,6 +32,7 @@ hr{
 h2{
     text-align: center;
     text-transform: uppercase;
+    margin: 1rem;
 }
 
 #table-list{
