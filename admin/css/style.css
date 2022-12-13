@@ -25,6 +25,15 @@ body{
     background-color: var(--background-color);
     color: var(--text-color);
 }
+
+hr{
+    border-color: black;
+}
+h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+
 #table-list{
     table-layout: fixed;
 }
@@ -61,12 +70,14 @@ th,.data, td{
 
 .navigate{
     justify-content: space-between;
-    margin: 1rem;
-    font-size: 25px;
+    margin: 2rem;
     font-weight: 900;
 }
 
 .navigate a, .data a{
+    color: #1B4645;
+}
+.navigate a:hover, .data a:hover{
     color: var(--button-color);
 }
 

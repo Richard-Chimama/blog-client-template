@@ -14,17 +14,16 @@ try {
         htmlContent = `
                 <div data-id=${res._id}>
                     <h3>${res.title}</h3>
-                    <div>${res.author}</</div>
-                    <p>${res.date}</p>
+                    <div><b>Author:</b> ${res.author}</</div>
+                    <p><b>Date:</b> ${new Date(res.date).toDateString()}</p>
                     <p> 
                         ${res.content}
                     </p>
+                    <p>Tags:</p>
                 </div>
             `;
         
-        for(tag of res.tags){
-            let firstPart = ""
-            
+        for(tag of res.tags){            
             htmlContent += `
                 <div class="tags">
                     <ul>
