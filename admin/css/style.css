@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -24,6 +26,7 @@ body{
     margin: 2rem auto;
     background-color: var(--background-color);
     color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
 }
 
 hr{
@@ -67,6 +70,11 @@ th,.data, td{
 .data{
     width: calc(100%/5);
     color: var(--text-color);
+    font-size: 14px;
+}
+
+.manage-col{
+    font-size: 12px;
 }
 
 .navigate{
